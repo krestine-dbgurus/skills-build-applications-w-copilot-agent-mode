@@ -1,19 +1,8 @@
 import { useEffect, useState } from 'react'
-
-const codespaceName = import.meta.env.VITE_CODESPACE_NAME
-const apiBaseUrl = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api'
-
-function normalizeItems(payload) {
-  if (Array.isArray(payload)) return payload
-  if (Array.isArray(payload?.items)) return payload.items
-  if (Array.isArray(payload?.results)) return payload.results
-  if (Array.isArray(payload?.data)) return payload.data
-  return []
-}
+import { getApiBaseUrl, normalizeItems } from '../lib/api'
 
 export default function Teams() {
+  const apiBaseUrl = getApiBaseUrl()
   const [items, setItems] = useState([])
   const [error, setError] = useState('')
 

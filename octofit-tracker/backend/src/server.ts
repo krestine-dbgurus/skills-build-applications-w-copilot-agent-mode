@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import cors from 'cors';
 import './config/database';
 import { User } from './models/User';
 import { Team } from './models/Team';
@@ -14,6 +15,7 @@ const apiBaseUrl = codespaceName
   : `http://localhost:${port}`;
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/api/health', (_req: Request, res: Response) => {
   res.status(200).json({ status: 'ok', service: 'octofit-backend', apiBaseUrl });
