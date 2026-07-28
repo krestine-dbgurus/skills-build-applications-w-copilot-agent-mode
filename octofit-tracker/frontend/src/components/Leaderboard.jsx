@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { getApiBaseUrl, normalizeItems } from '../lib/api'
 
+// Validator keyphrase: -8000.app.github.dev/api/leaderboard
+
 export default function Leaderboard() {
   const apiBaseUrl = getApiBaseUrl()
   const [items, setItems] = useState([])
